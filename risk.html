@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Risk</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -10,19 +11,17 @@
   <h2>Nivara</h2>
 </div>
 
-<div style="padding:40px;">
+<div class="container">
+
   <h2>Risk Screening</h2>
 
-  <button class="btn" onclick="showRisk()">Check Risk</button>
+  <button onclick="showRisk()" class="btn">Check Risk</button>
 
   <p id="result"></p>
+
 </div>
 
-<script>
-function showRisk(){
-  document.getElementById("result").innerText = "Risk Level: Medium";
-}
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
