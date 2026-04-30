@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="navbar">
+  <h2>Nivara</h2>
+</div>
+
+<div style="padding:40px;">
+  <h2>Risk Screening</h2>
+
+  <button class="btn" onclick="showRisk()">Check Risk</button>
+
+  <p id="result"></p>
+</div>
+
+<script>
+function showRisk(){
+  document.getElementById("result").innerText = "Risk Level: Medium";
+}
+</script>
+
+</body>
+</html>
