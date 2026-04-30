@@ -1,28 +1,52 @@
-function showPage(id) {
-  document.querySelectorAll(".page").forEach(p => p.classList.add("hidden"));
-  document.getElementById(id).classList.remove("hidden");
+// LOGIN
+function login() {
+  window.location.href = "dashboard.html";
 }
 
-function calcRisk() {
-  document.getElementById("riskResult").innerText = "Risk Level: Medium (Consult doctor)";
+// SIGNUP
+function signup() {
+  window.location.href = "dashboard.html";
 }
 
-function sendMsg() {
-  const input = document.getElementById("chatInput");
-  const box = document.getElementById("chatBox");
+// RISK
+function showRisk() {
+  const levels = ["Low", "Medium", "High"];
+  const random = levels[Math.floor(Math.random() * levels.length)];
 
-  const msg = input.value;
+  document.getElementById("result").innerText =
+    "Risk Level: " + random + " (Consult doctor)";
+}
 
-  if (!msg) return;
+// CHAT
+function send() {
+  let input = document.getElementById("msg");
+  let box = document.getElementById("chatBox");
 
-  box.innerHTML += `<div class="text-right mb-2">
-    <span class="bg-purple-600 text-white px-3 py-1 rounded">${msg}</span>
-  </div>`;
+  if (!input.value) return;
 
-  box.innerHTML += `<div class="text-left mb-2">
-    <span class="bg-gray-200 px-3 py-1 rounded">Stay strong 💜 We are here for you.</span>
-  </div>`;
+  // user message
+  box.innerHTML += `
+    <div style="text-align:right; margin:5px;">
+      <span style="background:#ec4899; color:white; padding:8px; border-radius:10px;">
+        ${input.value}
+      </span>
+    </div>
+  `;
+
+  // AI reply
+  box.innerHTML += `
+    <div style="text-align:left; margin:5px;">
+      <span style="background:#eee; padding:8px; border-radius:10px;">
+        You are not alone 💜 Stay strong. Consult a doctor for proper guidance.
+      </span>
+    </div>
+  `;
 
   input.value = "";
   box.scrollTop = box.scrollHeight;
+}
+
+// FILE UPLOAD (UI DEMO ONLY)
+function uploadReport() {
+  alert("Report uploaded successfully!");
 }
