@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="navbar">
+  <h2>Nivara</h2>
+</div>
+
+<div style="padding:20px;">
+
+<h2>AI Assistant</h2>
+
+<div id="chatBox" class="card" style="height:300px; overflow-y:auto;"></div>
+
+<input id="msg" style="width:80%;">
+<button class="btn" onclick="send()">Send</button>
+
+</div>
+
+<script>
+function send(){
+  let input = document.getElementById("msg").value;
+  let box = document.getElementById("chatBox");
+
+  box.innerHTML += "<p><b>You:</b> "+input+"</p>";
+  box.innerHTML += "<p><b>AI:</b> Stay strong 💜</p>";
+}
+</script>
+
+</body>
+</html>
