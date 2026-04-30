@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="styles.css">
+  <title>Chat</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -10,26 +11,18 @@
   <h2>Nivara</h2>
 </div>
 
-<div style="padding:20px;">
+<div class="container">
 
-<h2>AI Assistant</h2>
+  <h2>AI Assistant</h2>
 
-<div id="chatBox" class="card" style="height:300px; overflow-y:auto;"></div>
+  <div id="chatBox" class="chat-box"></div>
 
-<input id="msg" style="width:80%;">
-<button class="btn" onclick="send()">Send</button>
+  <input id="msg" placeholder="Type message...">
+  <button onclick="send()" class="btn">Send</button>
 
 </div>
 
-<script>
-function send(){
-  let input = document.getElementById("msg").value;
-  let box = document.getElementById("chatBox");
-
-  box.innerHTML += "<p><b>You:</b> "+input+"</p>";
-  box.innerHTML += "<p><b>AI:</b> Stay strong 💜</p>";
-}
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
