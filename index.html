@@ -1,101 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Nivara Care</title>
+<meta charset="UTF-8">
+<title>Nivara Care</title>
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
-  <style>
-    body { font-family: 'Poppins', sans-serif; }
-  </style>
+<style>
+body { font-family: 'Poppins', sans-serif; }
+</style>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-pink-50">
 
-<!-- NAVBAR -->
-<div class="bg-indigo-600 text-white p-4 flex justify-between items-center">
-  <h1 class="text-xl font-bold">Nivara Care</h1>
+<div class="flex h-screen">
 
-  <div class="space-x-3">
-    <button onclick="showPage('dashboard')" class="hover:underline">Dashboard</button>
-    <button onclick="showPage('risk')" class="hover:underline">Risk</button>
-    <button onclick="showPage('chat')" class="hover:underline">Chat</button>
-    <button onclick="showPage('appointments')" class="hover:underline">Appointments</button>
-    <button onclick="showPage('reports')" class="hover:underline">Reports</button>
+  <!-- SIDEBAR -->
+  <div class="w-64 bg-white shadow-lg p-4">
+    <h1 class="text-xl font-bold text-purple-600 mb-6">Nivara</h1>
+
+    <ul class="space-y-3">
+      <li onclick="showPage('dashboard')" class="cursor-pointer hover:text-purple-600">Dashboard</li>
+      <li onclick="showPage('risk')" class="cursor-pointer hover:text-purple-600">Risk Screening</li>
+      <li onclick="showPage('appointments')" class="cursor-pointer hover:text-purple-600">Appointments</li>
+      <li onclick="showPage('reports')" class="cursor-pointer hover:text-purple-600">Reports</li>
+      <li onclick="showPage('chat')" class="cursor-pointer hover:text-purple-600">AI Assistant</li>
+      <li onclick="showPage('treatment')" class="cursor-pointer hover:text-purple-600">Treatment</li>
+      <li onclick="showPage('community')" class="cursor-pointer hover:text-purple-600">Community</li>
+      <li onclick="showPage('finance')" class="cursor-pointer hover:text-purple-600">Financial Aid</li>
+    </ul>
   </div>
-</div>
 
-<!-- CONTENT -->
-<div class="p-6">
+  <!-- MAIN CONTENT -->
+  <div class="flex-1 p-6 overflow-y-auto">
 
-  <!-- DASHBOARD -->
-  <div id="dashboard" class="page">
-    <h2 class="text-2xl font-bold mb-4">Dashboard</h2>
+    <!-- DASHBOARD -->
+    <div id="dashboard" class="page">
+      <h2 class="text-2xl font-bold mb-4">Dashboard</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div class="bg-white p-4 rounded shadow">
-        <h3 class="text-gray-500">Risk Level</h3>
-        <p class="text-xl font-bold text-yellow-500">Medium</p>
-      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-white p-4 rounded shadow">
+          <p class="text-gray-500">Risk Level</p>
+          <h3 class="text-xl text-yellow-500 font-bold">Medium</h3>
+        </div>
 
-      <div class="bg-white p-4 rounded shadow">
-        <h3 class="text-gray-500">Appointments</h3>
-        <p class="text-xl font-bold">2</p>
-      </div>
+        <div class="bg-white p-4 rounded shadow">
+          <p class="text-gray-500">Appointments</p>
+          <h3 class="text-xl font-bold">2</h3>
+        </div>
 
-      <div class="bg-white p-4 rounded shadow">
-        <h3 class="text-gray-500">Reports</h3>
-        <p class="text-xl font-bold">3</p>
+        <div class="bg-white p-4 rounded shadow">
+          <p class="text-gray-500">Care Score</p>
+          <h3 class="text-xl text-green-500 font-bold">78%</h3>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- RISK -->
-  <div id="risk" class="page hidden">
-    <h2 class="text-2xl font-bold mb-4">Risk Screening</h2>
-
-    <button onclick="calculateRisk()" 
-      class="bg-indigo-600 text-white px-4 py-2 rounded">
-      Check Risk
-    </button>
-
-    <p id="riskResult" class="mt-4 text-lg font-semibold"></p>
-  </div>
-
-  <!-- CHAT -->
-  <div id="chat" class="page hidden">
-    <h2 class="text-2xl font-bold mb-4">AI Assistant</h2>
-
-    <div class="bg-white p-4 rounded shadow h-64 overflow-y-auto mb-4" id="chatBox"></div>
-
-    <div class="flex">
-      <input id="chatInput" class="flex-1 p-2 border rounded-l" placeholder="Ask something..." />
-      <button onclick="sendMessage()" class="bg-indigo-600 text-white px-4 rounded-r">Send</button>
+    <!-- RISK -->
+    <div id="risk" class="page hidden">
+      <h2 class="text-2xl font-bold mb-4">Risk Screening</h2>
+      <button onclick="calcRisk()" class="bg-purple-600 text-white px-4 py-2 rounded">
+        Check Risk
+      </button>
+      <p id="riskResult" class="mt-4 text-lg"></p>
     </div>
-  </div>
 
-  <!-- APPOINTMENTS -->
-  <div id="appointments" class="page hidden">
-    <h2 class="text-2xl font-bold mb-4">Appointments</h2>
-
-    <div class="bg-white p-4 rounded shadow">
-      Dr. Sharma — Tomorrow 10 AM
+    <!-- APPOINTMENTS -->
+    <div id="appointments" class="page hidden">
+      <h2 class="text-2xl font-bold mb-4">Appointments</h2>
+      <div class="bg-white p-4 rounded shadow">
+        Dr. Mehta — Tomorrow 11 AM
+      </div>
     </div>
+
+    <!-- REPORTS -->
+    <div id="reports" class="page hidden">
+      <h2 class="text-2xl font-bold mb-4">Reports</h2>
+      <input type="file" class="mb-2">
+      <button class="bg-purple-600 text-white px-4 py-2 rounded">Upload</button>
+    </div>
+
+    <!-- CHAT -->
+    <div id="chat" class="page hidden">
+      <h2 class="text-2xl font-bold mb-4">AI Assistant</h2>
+
+      <div id="chatBox" class="bg-white h-64 p-4 rounded shadow overflow-y-auto mb-4"></div>
+
+      <div class="flex">
+        <input id="chatInput" class="flex-1 border p-2 rounded-l" placeholder="Type message...">
+        <button onclick="sendMsg()" class="bg-purple-600 text-white px-4 rounded-r">Send</button>
+      </div>
+    </div>
+
+    <!-- TREATMENT -->
+    <div id="treatment" class="page hidden">
+      <h2 class="text-2xl font-bold mb-4">Treatment Tracker</h2>
+      <p>✔ Medication taken today</p>
+      <p>✔ Follow-up scheduled</p>
+    </div>
+
+    <!-- COMMUNITY -->
+    <div id="community" class="page hidden">
+      <h2 class="text-2xl font-bold mb-4">Community Support</h2>
+      <p>Anonymous support forum coming soon...</p>
+    </div>
+
+    <!-- FINANCE -->
+    <div id="finance" class="page hidden">
+      <h2 class="text-2xl font-bold mb-4">Financial Aid</h2>
+      <p>NGOs available for support</p>
+    </div>
+
   </div>
-
-  <!-- REPORTS -->
-  <div id="reports" class="page hidden">
-    <h2 class="text-2xl font-bold mb-4">Reports</h2>
-
-    <input type="file" class="mb-2"/>
-    <button class="bg-indigo-600 text-white px-4 py-2 rounded">Upload</button>
-  </div>
-
 </div>
 
 <script src="script.js"></script>
